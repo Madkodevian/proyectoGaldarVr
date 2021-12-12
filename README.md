@@ -11,6 +11,8 @@
 ***
 This is an API project about a VR walk on Galdar's Technology Park.
 
+PDF of the document: [documentacion_proyecto.pdf](https://github.com/Madkodevian/proyectoGaldarVr/files/7698659/documentacion_proyecto.pdf)
+
 ## Technologies
 ***
 The technologies that I used in my project are:
