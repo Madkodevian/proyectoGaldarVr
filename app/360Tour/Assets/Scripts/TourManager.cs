@@ -19,7 +19,7 @@ public class TourManager : MonoBehaviour
     void Start()
     {
         ReturnToMenu();
-        ReturnToProfile();
+        // ReturnToProfile();
 
         // if(ButtonClick.Click() == true)
         // {

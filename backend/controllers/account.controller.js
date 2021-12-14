@@ -1,118 +1,117 @@
 const db = require("../models");
-const User = db.users;
+const Account = db.accounts;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new User
+// Create and Save a new Account
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.firstName) {
+    if (!req.body.activities) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
 
-    // Create an User
-    const user = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
+    // Create an Account
+    const account = {
+        activities: req.body.activities,
+        userComment: req.body.userComment
     };
 
-    // Save User in the database
-    User.create(user)
+    // Save Account in the database
+    Account.create(account)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error ocurred while creating the user."
+                    err.message || "Some error ocurred while creating the account."
             });
         });
 };
 
-// Retrieve all Users from the database
+// Retrieve all Accounts from the database
 exports.findAll = (req, res) => {
-    User.findAll()
+    Account.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error ocurred while retrieving the users."
+                    err.message || "Some error ocurred while retrieving the accounts."
             });
         });
 };
 
-// Find a single User with an id
+// Find a single Account with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-  User.findByPk(id)
+  Account.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find the user with id=${id}.`
+          message: `Cannot find the account with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving the user with id=" + id
+        message: "Error retrieving the account with id=" + id
       });
     });
 };
 
-// Update an User by the id in the request
+// Update an Account by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-  User.update(req.body, {
+  Account.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "The user was updated successfully."
+          message: "The account was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update the user with id=${id}. Maybe the user was not found or req.body is empty!`
+          message: `Cannot update the account with id=${id}. Maybe the account was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating the user with id=" + id
+        message: "Error updating the account with id=" + id
       });
     });
 };
 
-// Delete an User with the specified id in the request
+// Delete an Account with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-  User.destroy({
+  Account.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "The user was deleted successfully!"
+          message: "The account was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete the user with id=${id}. Maybe the user was not found!`
+          message: `Cannot delete the account with id=${id}. Maybe the account was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete the user with id=" + id
+        message: "Could not delete the account with id=" + id
       });
     });
 };

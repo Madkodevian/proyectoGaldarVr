@@ -1,118 +1,117 @@
 const db = require("../models");
-const User = db.users;
+const Vrwalk = db.vrwalks;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new User
+// Create and Save a new VR walk
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.firstName) {
+    if (!req.body.scene) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
 
-    // Create an User
-    const user = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
+    // Create a VR walk
+    const vrwalk = {
+        scene: req.body.scene,
+        information: req.body.information
     };
 
-    // Save User in the database
-    User.create(user)
+    // Save VR walk in the database
+    Vrwalk.create(vrwalk)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error ocurred while creating the user."
+                    err.message || "Some error ocurred while creating the VR walk."
             });
         });
 };
 
-// Retrieve all Users from the database
+// Retrieve all VR walks from the database
 exports.findAll = (req, res) => {
-    User.findAll()
+    Vrwalk.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error ocurred while retrieving the users."
+                    err.message || "Some error ocurred while retrieving the VR walks."
             });
         });
 };
 
-// Find a single User with an id
+// Find a single VR walk with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-  User.findByPk(id)
+  Vrwalk.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find the user with id=${id}.`
+          message: `Cannot find the VR walk with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving the user with id=" + id
+        message: "Error retrieving the VR walk with id=" + id
       });
     });
 };
 
-// Update an User by the id in the request
+// Update a VR walk by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
 
-  User.update(req.body, {
+  Vrwalk.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "The user was updated successfully."
+          message: "The VR walk was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update the user with id=${id}. Maybe the user was not found or req.body is empty!`
+          message: `Cannot update the VR walk with id=${id}. Maybe the VR walk was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating the user with id=" + id
+        message: "Error updating the VR walk with id=" + id
       });
     });
 };
 
-// Delete an User with the specified id in the request
+// Delete a VR walk with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-  User.destroy({
+  Vrwalk.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "The user was deleted successfully!"
+          message: "The VR walk was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete the user with id=${id}. Maybe the user was not found!`
+          message: `Cannot delete the VR walk with id=${id}. Maybe VR walk was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete the user with id=" + id
+        message: "Could not delete the VR walk with id=" + id
       });
     });
 };
