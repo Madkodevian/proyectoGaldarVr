@@ -5,12 +5,12 @@ using TMPro;
 
 public class userDatabase : MonoBehaviour
 {
-    public TextMeshProUGUI userText; 
+    // public TextMeshProUGUI userText; 
 
-    public void NewUser()
-    {
-        //Set user text to value returned
-        User user = APIHelper.GetNewUser();
-        userText.text = user.value;
-    }
+    // public void NewUser()
+    // {
+    //     //Set user text to value returned
+    //     User user = APIHelper.GetNewUser();
+    //     userText.text = user.value;
+    // }
 }

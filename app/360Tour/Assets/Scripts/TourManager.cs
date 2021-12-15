@@ -19,12 +19,6 @@ public class TourManager : MonoBehaviour
     void Start()
     {
         ReturnToMenu();
-        // ReturnToProfile();
-
-        // if(ButtonClick.Click() == true)
-        // {
-        //     ReturnToProfile();
-        // }
     }
 
     // Update is called once per frame
