@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-public class conectionUsers
+public class conectionUsers : MonoBehaviour
 {
 public async Task<User> Get(string url) {
 

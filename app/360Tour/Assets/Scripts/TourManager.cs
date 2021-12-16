@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using static ButtonClick;
-// using (ButtonClick button1 = new ButtonClick());
 
 public class TourManager : MonoBehaviour
 {
