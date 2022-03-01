@@ -11,7 +11,7 @@
 ***
 This is an API project about a VR walk on Galdar's Technology Park.
 
-PDF of the document: [paseo_virtual.pdf](https://github.com/Madkodevian/proyectoGaldarVr/files/8165454/paseo_virtual.pdf)
+PDF of the document: [paseo_virtual.pdf](https://github.com/Madkodevian/proyectoGaldarVr/files/8165464/paseo_virtual.pdf)
 
 ## Technologies
 ***
